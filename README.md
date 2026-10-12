@@ -6,6 +6,8 @@ At first, we were constantly turning them back on for named timers. Those have b
 
 I finally have a solution everyone likes, and Amazon hasn’t been up in our business for weeks. The setup is a little time-consuming, but maybe someone smarter than me can turn this into a custom integration available through HACS. If not, maybe this will help someone else.
 
+https://github.com/DarkComicHero/chronometer
+
 **Our requirements:**
 
 - Set multiple named timers using ESPHome voice devices and announce each timer’s name when it finishes. For example, a “60-minute chicken timer” and a “30-minute potato timer.”
