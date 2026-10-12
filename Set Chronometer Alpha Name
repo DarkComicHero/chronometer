@@ -1,0 +1,12 @@
+alias: Set Chronometer Alpha Name
+description: ''
+triggers:
+  - trigger: conversation
+    command:
+      - set chronometer alpha name to {chronometer_name}
+actions:
+  - action: input_text.set_value
+    target:
+      entity_id: input_text.chronometer_alpha_name
+    data:
+      value: '{{ trigger.slots.chronometer_name }}'
