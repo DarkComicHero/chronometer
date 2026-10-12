@@ -11,10 +11,10 @@ https://github.com/DarkComicHero/chronometer
 **Our requirements:**
 
 - Set multiple named timers using ESPHome voice devices and announce each timer’s name when it finishes. For example, a “60-minute chicken timer” and a “30-minute potato timer.”
-- Announce completion on more than just the device that started the timer. For example, start a timer in the kitchen and hear it in the family room so I can go back to watching TV. With Alexa, we’d tell the kitchen Echo, “Set a 35-minute timer on Family Alexa.” My solution announces on all devices, which works better for us anyway.
+- Announce completion on more than just the device that started the timer. For example, start a timer in the kitchen and hear it in the family room so I can go back to watching TV. With Alexa, we’d tell the kitchen Echo, “Set a 35-minute green bean timer on Family Alexa.” My solution announces on all devices, which works better for us anyway.
 - Show timers on the dashboard and allow us to adjust them there.
 - Adjust timers while they’re running. For example, the voice assistant heard “tomato timer for 3 minutes,” but I meant “potato timer for 30 minutes.”
-- Survive a reboot of HA or an ESPHome device and, better than Alexa, continue working without internet access.
+- Survive a reboot of HA or an ESPHome device.
 - Ask how much time remains. This one still isn’t resolved through voice, but the remaining time is visible on the dashboard.
 
 **My setup:**
