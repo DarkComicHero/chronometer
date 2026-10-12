@@ -1,0 +1,400 @@
+type: sections
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        icon: ''
+        heading: Chronometer Alpha
+        heading_style: title
+        card_mod:
+          class: header-left
+      - type: entities
+        entities:
+          - entity: input_text.chronometer_alpha_name
+            name: 'Text:'
+        grid_options:
+          rows: auto
+          columns: full
+        title: Name
+        show_header_toggle: false
+        card_mod:
+          class: middle-left
+      - type: entities
+        entities:
+          - entity: input_number.chronometer_alpha_length
+            name: ''
+        grid_options:
+          rows: auto
+          columns: full
+        title: Length
+        show_header_toggle: false
+        card_mod:
+          class: middle-left
+      - type: tile
+        entity: input_boolean.chronometer_alpha_power
+        name: Power
+        show_entity_picture: false
+        hide_state: false
+        vertical: false
+        features:
+          - type: toggle
+        features_position: bottom
+        card_mod:
+          class: middle-left
+      - type: heading
+        icon: ''
+        heading_style: title
+        card_mod:
+          class: footer-left
+        visibility:
+          - condition: state
+            entity_id: input_boolean.chronometer_alpha_power
+            state:
+              - 'off'
+      - type: custom:mushroom-template-card
+        entity: input_boolean.chronometer_alpha_power
+        primary: >
+          {% set dummy = now() %}
+
+          {% set duration = states('input_number.chronometer_alpha_length') |
+          int(0) * 60 %}
+
+
+          {% set elapsed =
+             as_timestamp(now()) -
+             as_timestamp(states.input_boolean.chronometer_alpha_power.last_changed) %}
+
+          {% set remaining = [duration - elapsed, 0] | max | int %}
+
+          {% set mins = (remaining / 60) | round(0, 'ceil') | int %}
+
+
+          {{ mins }} minute{{ 's' if mins != 1 else '' }} remaining
+        card_mod:
+          class: footer-left
+        grid_options:
+          columns: full
+        visibility:
+          - condition: state
+            entity_id: input_boolean.chronometer_alpha_power
+            state:
+              - 'on'
+  - type: grid
+    cards:
+      - type: heading
+        icon: ''
+        heading: Chronometer Bravo
+        heading_style: title
+        card_mod:
+          class: header-left
+      - type: entities
+        entities:
+          - entity: input_text.chronometer_bravo_name
+            name: 'Text:'
+        grid_options:
+          rows: auto
+          columns: full
+        title: Name
+        show_header_toggle: false
+        card_mod:
+          class: middle-left
+      - type: entities
+        entities:
+          - entity: input_number.chronometer_bravo_length
+            name: ''
+        grid_options:
+          rows: auto
+          columns: full
+        title: Length
+        show_header_toggle: false
+        card_mod:
+          class: middle-left
+      - type: tile
+        entity: input_boolean.chronometer_bravo_power
+        name: Power
+        show_entity_picture: false
+        hide_state: false
+        vertical: false
+        features:
+          - type: toggle
+        features_position: bottom
+        card_mod:
+          class: middle-left
+      - type: heading
+        icon: ''
+        heading_style: title
+        card_mod:
+          class: footer-left
+        visibility:
+          - condition: state
+            entity_id: input_boolean.chronometer_bravo_power
+            state:
+              - 'off'
+      - type: custom:mushroom-template-card
+        entity: input_boolean.chronometer_bravo_powerpower
+        primary: >
+          {% set dummy = now() %}
+
+          {% set duration = states('input_number.chronometer_bravo_length') |
+          int(0) * 60 %}
+
+
+          {% set elapsed =
+             as_timestamp(now()) -
+             as_timestamp(states.input_boolean.chronometer_bravo_power.last_changed) %}
+
+          {% set remaining = [duration - elapsed, 0] | max | int %}
+
+          {% set mins = (remaining / 60) | round(0, 'ceil') | int %}
+
+
+          {{ mins }} minute{{ 's' if mins != 1 else '' }} remaining
+        card_mod:
+          class: footer-left
+        grid_options:
+          columns: full
+        visibility:
+          - condition: state
+            entity_id: input_boolean.chronometer_bravo_power
+            state:
+              - 'on'
+  - type: grid
+    cards:
+      - type: heading
+        icon: ''
+        heading: Chronometer Charlie
+        heading_style: title
+        card_mod:
+          class: header-left
+      - type: entities
+        entities:
+          - entity: input_text.chronometer_charlie_name
+            name: 'Text:'
+        grid_options:
+          rows: auto
+          columns: full
+        title: Name
+        show_header_toggle: false
+        card_mod:
+          class: middle-left
+      - type: entities
+        entities:
+          - entity: input_number.chronometer_charlie_length
+            name: ''
+        grid_options:
+          rows: auto
+          columns: full
+        title: Length
+        show_header_toggle: false
+        card_mod:
+          class: middle-left
+      - type: tile
+        entity: input_boolean.chronometer_charlie_power
+        name: Power
+        show_entity_picture: false
+        hide_state: false
+        vertical: false
+        features:
+          - type: toggle
+        features_position: bottom
+        card_mod:
+          class: middle-left
+      - type: heading
+        icon: ''
+        heading_style: title
+        card_mod:
+          class: footer-left
+        visibility:
+          - condition: state
+            entity_id: input_boolean.chronometer_charlie_power
+            state:
+              - 'off'
+      - type: custom:mushroom-template-card
+        entity: input_boolean.chronometer_charlie_powerpower
+        primary: >
+          {% set dummy = now() %}
+
+          {% set duration = states('input_number.chronometer_charlie_length') |
+          int(0) * 60 %}
+
+
+          {% set elapsed =
+             as_timestamp(now()) -
+             as_timestamp(states.input_boolean.chronometer_charlie_power.last_changed) %}
+
+          {% set remaining = [duration - elapsed, 0] | max | int %}
+
+          {% set mins = (remaining / 60) | round(0, 'ceil') | int %}
+
+
+          {{ mins }} minute{{ 's' if mins != 1 else '' }} remaining
+        card_mod:
+          class: footer-left
+        grid_options:
+          columns: full
+        visibility:
+          - condition: state
+            entity_id: input_boolean.chronometer_charlie_power
+            state:
+              - 'on'
+  - type: grid
+    cards:
+      - type: heading
+        icon: ''
+        heading: Chronometer Delta
+        heading_style: title
+        card_mod:
+          class: header-left
+      - type: entities
+        entities:
+          - entity: input_text.chronometer_delta_name
+            name: 'Text:'
+        grid_options:
+          rows: auto
+          columns: full
+        title: Name
+        show_header_toggle: false
+        card_mod:
+          class: middle-left
+      - type: entities
+        entities:
+          - entity: input_number.chronometer_delta_length
+            name: ''
+        grid_options:
+          rows: auto
+          columns: full
+        title: Length
+        show_header_toggle: false
+        card_mod:
+          class: middle-left
+      - type: tile
+        entity: input_boolean.chronometer_delta_power
+        name: Power
+        show_entity_picture: false
+        hide_state: false
+        vertical: false
+        features:
+          - type: toggle
+        features_position: bottom
+        card_mod:
+          class: middle-left
+      - type: heading
+        icon: ''
+        heading_style: title
+        card_mod:
+          class: footer-left
+        visibility:
+          - condition: state
+            entity_id: input_boolean.chronometer_delta_power
+            state:
+              - 'off'
+      - type: custom:mushroom-template-card
+        entity: input_boolean.chronometer_delta_powerpower
+        primary: >
+          {% set dummy = now() %}
+
+          {% set duration = states('input_number.chronometer_delta_length') |
+          int(0) * 60 %}
+
+
+          {% set elapsed =
+             as_timestamp(now()) -
+             as_timestamp(states.input_boolean.chronometer_delta_power.last_changed) %}
+
+          {% set remaining = [duration - elapsed, 0] | max | int %}
+
+          {% set mins = (remaining / 60) | round(0, 'ceil') | int %}
+
+
+          {{ mins }} minute{{ 's' if mins != 1 else '' }} remaining
+        card_mod:
+          class: footer-left
+        grid_options:
+          columns: full
+        visibility:
+          - condition: state
+            entity_id: input_boolean.chronometer_delta_power
+            state:
+              - 'on'
+  - type: grid
+    cards:
+      - type: heading
+        icon: ''
+        heading: Chronometer Echo
+        heading_style: title
+        card_mod:
+          class: header-left
+      - type: entities
+        entities:
+          - entity: input_text.chronometer_echo_name
+            name: 'Text:'
+        grid_options:
+          rows: auto
+          columns: full
+        title: Name
+        show_header_toggle: false
+        card_mod:
+          class: middle-left
+      - type: entities
+        entities:
+          - entity: input_number.chronometer_echo_length
+            name: ''
+        grid_options:
+          rows: auto
+          columns: full
+        title: Length
+        show_header_toggle: false
+        card_mod:
+          class: middle-left
+      - type: tile
+        entity: input_boolean.chronometer_echo_power
+        name: Power
+        show_entity_picture: false
+        hide_state: false
+        vertical: false
+        features:
+          - type: toggle
+        features_position: bottom
+        card_mod:
+          class: middle-left
+      - type: heading
+        icon: ''
+        heading_style: title
+        card_mod:
+          class: footer-left
+        visibility:
+          - condition: state
+            entity_id: input_boolean.chronometer_echo_power
+            state:
+              - 'off'
+      - type: custom:mushroom-template-card
+        entity: input_boolean.chronometer_echo_powerpower
+        primary: >
+          {% set dummy = now() %}
+
+          {% set duration = states('input_number.chronometer_echo_length') |
+          int(0) * 60 %}
+
+
+          {% set elapsed =
+             as_timestamp(now()) -
+             as_timestamp(states.input_boolean.chronometer_echo_power.last_changed) %}
+
+          {% set remaining = [duration - elapsed, 0] | max | int %}
+
+          {% set mins = (remaining / 60) | round(0, 'ceil') | int %}
+
+
+          {{ mins }} minute{{ 's' if mins != 1 else '' }} remaining
+        card_mod:
+          class: footer-left
+        grid_options:
+          columns: full
+        visibility:
+          - condition: state
+            entity_id: input_boolean.chronometer_echo_power
+            state:
+              - 'on'
+max_columns: 4
+title: chronometers
+cards: []
