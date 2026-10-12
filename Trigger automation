@@ -1,0 +1,161 @@
+alias: Chronometer Alpha
+description: ''
+triggers:
+  - trigger: time_pattern
+    seconds: '01'
+  - trigger: time_pattern
+    seconds: '11'
+  - trigger: time_pattern
+    seconds: '21'
+  - trigger: time_pattern
+    seconds: '31'
+  - trigger: time_pattern
+    seconds: '41'
+  - trigger: time_pattern
+    seconds: '51'
+conditions:
+  - condition: and
+    conditions:
+      - condition: switch.is_on
+        target:
+          entity_id: input_boolean.chronometer_alpha_power
+        options:
+          behavior: any
+          for: '00:00:00'
+      - condition: template
+        value_template: >
+          {% set chronometer = states('input_number.chronometer_alpha_length')
+          %} {% if ':' in chronometer %}
+            {% set parts = chronometer.split(':') %}
+            {% set minutes = (parts[0] | int) * 60 + (parts[1] | int) %}
+          {% else %}
+            {% set minutes = chronometer | int %}
+          {% endif %}
+
+          {{ (as_timestamp(now()) -
+              as_timestamp(states.input_boolean.chronometer_alpha_power.last_changed)) >
+              (minutes * 60) }}
+actions:
+  - if:
+      - condition: switch.is_off
+        target:
+          entity_id: input_boolean.work_mode
+        options:
+          behavior: any
+          for: '00:00:00'
+    then:
+      - parallel:
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: false
+              message: '{{ states(''input_text.chronometer_alpha_name'') }}'
+              media_player_entity_id: media_player.family_room_family_room_voicie_media_player
+            target:
+              entity_id: tts.home_assistant_cloud
+            enabled: true
+            alias: Family room
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: false
+              message: '{{ states(''input_text.chronometer_alpha_name'') }}'
+              media_player_entity_id: media_player.dining_room_mess_voice_media_player
+            target:
+              entity_id: tts.home_assistant_cloud
+            enabled: true
+            alias: Dining Room
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: false
+              message: '{{ states(''input_text.chronometer_alpha_name'') }}'
+              media_player_entity_id: media_player.bedroom_bedroom_voice_media_player_2
+            target:
+              entity_id: tts.home_assistant_cloud
+            enabled: true
+            alias: Bedroom
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: false
+              message: '{{ states(''input_text.chronometer_alpha_name'') }}'
+              media_player_entity_id: media_player.lassie_s_office_lassie_voice_media_player_2
+            target:
+              entity_id: tts.home_assistant_cloud
+            enabled: true
+            alias: Lassie's Office
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: false
+              message: '{{ states(''input_text.chronometer_alpha_name'') }}'
+              media_player_entity_id: media_player.office_bathroom_bathroom_voice_media_player_2
+            target:
+              entity_id: tts.home_assistant_cloud
+            enabled: true
+            alias: Office Bathroom
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: false
+              message: '{{ states(''input_text.chronometer_alpha_name'') }}'
+              media_player_entity_id: media_player.dad_s_office_bridge_voice_media_player
+            target:
+              entity_id: tts.home_assistant_cloud
+            enabled: true
+            alias: Office
+    else:
+      - parallel:
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: false
+              message: '{{ states(''input_text.chronometer_alpha_name'') }}'
+              media_player_entity_id: media_player.family_room_family_room_voicie_media_player
+            target:
+              entity_id: tts.home_assistant_cloud
+            enabled: true
+            alias: Family room
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: false
+              message: '{{ states(''input_text.chronometer_alpha_name'') }}'
+              media_player_entity_id: media_player.dining_room_mess_voice_media_player
+            target:
+              entity_id: tts.home_assistant_cloud
+            enabled: true
+            alias: Dining Room
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: false
+              message: '{{ states(''input_text.chronometer_alpha_name'') }}'
+              media_player_entity_id: media_player.bedroom_bedroom_voice_media_player_2
+            target:
+              entity_id: tts.home_assistant_cloud
+            enabled: true
+            alias: Bedroom
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: false
+              message: '{{ states(''input_text.chronometer_alpha_name'') }}'
+              media_player_entity_id: media_player.lassie_s_office_lassie_voice_media_player_2
+            target:
+              entity_id: tts.home_assistant_cloud
+            enabled: true
+            alias: Lassie's Office
+          - action: tts.speak
+            metadata: {}
+            data:
+              cache: false
+              message: '{{ states(''input_text.chronometer_alpha_name'') }}'
+              media_player_entity_id: media_player.office_bathroom_bathroom_voice_media_player_2
+            target:
+              entity_id: tts.home_assistant_cloud
+            enabled: true
+            alias: Office Bathroom
+    enabled: true
+mode: single
