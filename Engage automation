@@ -1,0 +1,163 @@
+alias: Chronometer  Engage
+description: ''
+triggers:
+  - trigger: conversation
+    command:
+      - chronometer {chronometer_length} and {chronometer_name}
+      - chronometer {chronometer_length} minutes named {chronometer_name}
+      - engage chronometer {chronometer_length} and {chronometer_name}
+      - >-
+        engage chronometer for {chronometer_length} minutes and name it
+        {chronometer_name}
+conditions: []
+actions:
+  - if:
+      - condition: switch.is_off
+        target:
+          entity_id: input_boolean.chronometer_alpha_power
+        options:
+          behavior: any
+          for: '00:00:00'
+    then:
+      - sequence:
+          - action: input_number.set_value
+            target:
+              entity_id: input_number.chronometer_alpha_length
+            data:
+              value: '{{ trigger.slots.chronometer_length }}'
+          - action: input_text.set_value
+            target:
+              entity_id: input_text.chronometer_alpha_name
+            data:
+              value: '{{ trigger.slots.chronometer_name }}'
+          - action: input_boolean.turn_on
+            metadata: {}
+            target:
+              entity_id: input_boolean.chronometer_alpha_power
+            data: {}
+          - set_conversation_response: >-
+              Chronometer Alpha Activated for {{
+              trigger.slots.chronometer_length }} minutes and labeled {{
+              trigger.slots.chronometer_name }}
+    else:
+      - if:
+          - condition: switch.is_off
+            target:
+              entity_id: input_boolean.chronometer_bravo_power
+            options:
+              behavior: any
+              for: '00:00:00'
+        then:
+          - sequence:
+              - action: input_number.set_value
+                target:
+                  entity_id: input_number.chronometer_bravo_length
+                data:
+                  value: '{{ trigger.slots.chronometer_length }}'
+              - action: input_text.set_value
+                target:
+                  entity_id: input_text.chronometer_bravo_name
+                data:
+                  value: '{{ trigger.slots.chronometer_name }}'
+              - action: input_boolean.turn_on
+                metadata: {}
+                target:
+                  entity_id: input_boolean.chronometer_bravo_power
+                data: {}
+              - set_conversation_response: >-
+                  Chronometer Bravo Activated for {{
+                  trigger.slots.chronometer_length }} minutes and labeled {{
+                  trigger.slots.chronometer_name }}
+        else:
+          - if:
+              - condition: switch.is_off
+                target:
+                  entity_id: input_boolean.chronometer_charlie_power
+                options:
+                  behavior: any
+                  for: '00:00:00'
+            then:
+              - sequence:
+                  - action: input_number.set_value
+                    target:
+                      entity_id: input_number.chronometer_charlie_length
+                    data:
+                      value: '{{ trigger.slots.chronometer_length }}'
+                  - action: input_text.set_value
+                    target:
+                      entity_id: input_text.chronometer_charlie_name
+                    data:
+                      value: '{{ trigger.slots.chronometer_name }}'
+                  - action: input_boolean.turn_on
+                    metadata: {}
+                    target:
+                      entity_id: input_boolean.chronometer_charlie_power
+                    data: {}
+                  - set_conversation_response: >-
+                      Chronometer Charlie Activated for {{
+                      trigger.slots.chronometer_length }} minutes and labeled {{
+                      trigger.slots.chronometer_name }}
+            else:
+              - if:
+                  - condition: switch.is_off
+                    target:
+                      entity_id: input_boolean.chronometer_delta_power
+                    options:
+                      behavior: any
+                      for: '00:00:00'
+                then:
+                  - sequence:
+                      - action: input_number.set_value
+                        target:
+                          entity_id: input_number.chronometer_delta_length
+                        data:
+                          value: '{{ trigger.slots.chronometer_length }}'
+                      - action: input_text.set_value
+                        target:
+                          entity_id: input_text.chronometer_delta_name
+                        data:
+                          value: '{{ trigger.slots.chronometer_name }}'
+                      - action: input_boolean.turn_on
+                        metadata: {}
+                        target:
+                          entity_id: input_boolean.chronometer_delta_power
+                        data: {}
+                      - set_conversation_response: >-
+                          Chronometer Delta Activated for {{
+                          trigger.slots.chronometer_length }} minutes and
+                          labeled {{ trigger.slots.chronometer_name }}
+                else:
+                  - if:
+                      - condition: switch.is_off
+                        target:
+                          entity_id: input_boolean.chronometer_echo_power
+                        options:
+                          behavior: any
+                          for: '00:00:00'
+                    then:
+                      - sequence:
+                          - action: input_number.set_value
+                            target:
+                              entity_id: input_number.chronometer_echo_length
+                            data:
+                              value: '{{ trigger.slots.chronometer_length }}'
+                          - action: input_text.set_value
+                            target:
+                              entity_id: input_text.chronometer_echo_name
+                            data:
+                              value: '{{ trigger.slots.chronometer_name }}'
+                          - action: input_boolean.turn_on
+                            metadata: {}
+                            target:
+                              entity_id: input_boolean.chronometer_echo_power
+                            data: {}
+                          - set_conversation_response: >-
+                              Chronometer Echo Activated for {{
+                              trigger.slots.chronometer_length }} minutes and
+                              labeled {{ trigger.slots.chronometer_name }}
+                    else:
+                      - set_conversation_response: >-
+                          All chronometers engaged, unable to add a {{
+                          trigger.slots.chronometer_length }} minute chronometer
+                          labeled {{ trigger.slots.chronometer_name }}
+mode: single
