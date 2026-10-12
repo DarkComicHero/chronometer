@@ -1,0 +1,14 @@
+alias: Set Chronometer Alpha Length
+description: ''
+triggers:
+  - trigger: conversation
+    command:
+      - chronometer alpha length {chronometer_length}
+conditions: []
+actions:
+  - action: input_number.set_value
+    target:
+      entity_id: input_number.chronometer_alpha_length
+    data:
+      value: '{{ trigger.slots.chronometer_length }}'
+mode: single
